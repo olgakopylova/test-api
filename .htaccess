@@ -1,0 +1,15 @@
+php_value display_errors 1
+
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+# Перенаправление с ДОМЕН на ДОМЕН/api
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ /api/$1 [R=301]
+
+#Перенаправление в index.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ /index.php
